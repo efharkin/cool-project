@@ -2,10 +2,12 @@ import matplotlib.pyplot as plt
 
 from fetch_data import DataFetcher
 
-SPREADSHEET_ID = 'secret'
-
 def main():
-    fetcher = DataFetcher(SPREADSHEET_ID, 'token.pickle', 'credentials.json')
+    with open('secrets/spreadsheet_id.txt', 'r') as f:
+        SPREADSHEET_ID = f.readline().strip()
+        f.close()
+
+    fetcher = DataFetcher(SPREADSHEET_ID, 'secrets/token.pickle', 'secrets/credentials.json')
     temperatures = fetcher.get_temperatures()
 
     ax = plt.subplot(111)
