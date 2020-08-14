@@ -15,6 +15,7 @@ def main():
     temperatures = fetcher.get_temperatures()
     events = fetcher.get_events()
 
+    plt.figure(figsize=(8, 5))
     ax = plt.subplot(111)
     BORDER_HEIGHT = 0.01
     BAR_HEIGHT = 0.04
@@ -48,7 +49,7 @@ def main():
     plt.xticks(rotation=45, ha='right')
     plt.ylabel('Temperature (C)')
     plt.xlabel('Time')
-    plt.legend()
+    plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
     plt.tight_layout()
 
     plt.show()
